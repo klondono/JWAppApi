@@ -49,6 +49,15 @@ namespace JWAppApi
 
             app.UseStaticFiles();
 
+            //Add Identity Server middleware to pipeline. It must be added before MVC
+            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            {
+                Authority = "http://localhost:5000",
+                RequireHttpsMetadata = false,
+
+                ApiName = "api1"
+            });
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

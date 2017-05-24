@@ -10,7 +10,8 @@ namespace JWAppApi.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return new JsonResult(from c in User.Claims select new { c.Type, c.Value });
+            //return View();
         }
 
         public IActionResult About()
