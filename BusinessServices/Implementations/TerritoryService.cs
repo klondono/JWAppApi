@@ -9,9 +9,9 @@ namespace BusinessServices.Implementations
     {
         private readonly JWAppContext db;
 
-        public TerritoryService(JWAppContext jWAppContext)
+        public TerritoryService(JWAppContext dbContext)
         {
-            db = jWAppContext;
+            db = dbContext;
         }
 
         public IEnumerable<Territory> GetTerritories(){

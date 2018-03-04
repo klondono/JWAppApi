@@ -11,18 +11,18 @@ namespace JWAppApi.Controllers
     [Route("api/[controller]")]
     public class TerritoriesController : Controller
     {
-        private readonly ITerritoryService _territoryService;
+        private readonly ITerritoryService territoryService;
 
-        public TerritoriesController(ITerritoryService territoryService){
+        public TerritoriesController(ITerritoryService service){
 
-            _territoryService = territoryService;
+            territoryService = service;
         }
 
         // GET api/values
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_territoryService.GetTerritories());
+            return Ok(territoryService.GetTerritories());
 
             //return new string[] { "value1", "value2" };
         }
