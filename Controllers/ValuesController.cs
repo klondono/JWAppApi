@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using JWAppApi.DbEntities;
+using BusinessServices.Interfaces;
 
 namespace JWAppApi.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
     {
+        private readonly ITerritoryService _territoryService;
+
+        public ValuesController(ITerritoryService territoryService){
+
+            _territoryService = territoryService;
+        }
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            return Ok(_territoryService.GetTerritories());
+
+            //return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
