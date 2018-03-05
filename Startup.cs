@@ -30,6 +30,12 @@ namespace JWAppApi
             //get connection string from appsettings.json
             services.AddDbContext<JWAppContext>(options => options
                 .UseSqlServer(Configuration.GetConnectionString("JWApp")));
+
+            services.AddCors(options => {
+                options.AddPolicy("AllowSpecificOrigin",
+                builder => builder.WithOrigins("http://localhost:4200"));
+            });
+
             services.AddMvc();
 
             //Register application services
@@ -47,6 +53,8 @@ namespace JWAppApi
             }
 
             app.UseMvc();
+
+            app.UseCors("AllowSpecificOrigin");
         }
     }
 }
