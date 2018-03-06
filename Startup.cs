@@ -51,10 +51,10 @@ namespace JWAppApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseCors("AllowSpecificOrigin");
             app.UseMvc();
 
-            app.UseCors("AllowSpecificOrigin");
+
         }
     }
 }
